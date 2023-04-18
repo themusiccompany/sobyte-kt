@@ -1,29 +1,45 @@
 package com.sobhanbera.noisymelo.sobyte.ui.theme
 
+import androidx.compose.material.Colors
 import androidx.compose.ui.graphics.Color
 
-val DarkPrimary = Color(0xFF03DAC5)
-val DarkPrimaryVariant = Color(0xFF03DAC5)
-val DarkSecondary = Color(0xFF03DAC5)
-val DarkSecondaryVariant = Color(0xFF03DAC5)
-val DarkBackground = Color(0xFF03DAC5)
-val DarkSurface = Color(0xFF03DAC5)
-val DarkError = Color(0xFF03DAC5)
-val DarkOnPrimary = Color(0xFF03DAC5)
-val DarkOnSecondary = Color(0xFF03DAC5)
-val DarkOnBackground = Color(0xFF03DAC5)
-val DarkOnSurface = Color(0xFF03DAC5)
-val DarkOnError = Color(0xFF03DAC5)
+// default colors for MaterialTheme
+val DarkPrimary = Color(0xFF003785)
+val DarkPrimaryVariant = Color(0xFF0F60B6)
+val DarkSecondary = Color(0xFFEF1559)
+val DarkSecondaryVariant = Color(0xFFEE7674)
+val DarkBackground = Color(0xFF121212)
+val DarkSurface = Color(0xFF21242b)
+val DarkError = Color(0xFFFF5500)
+val DarkOnPrimary = Color(0xFF003785)
+val DarkOnSecondary = Color(0xFFEF1559)
+val DarkOnBackground = Color(0xFF121212)
+val DarkOnSurface = Color(0xFF21242b)
+val DarkOnError = Color(0xFFFF5500)
 
-val LightPrimary = Color(0xFF03DAC5)
-val LightPrimaryVariant = Color(0xFF03DAC5)
-val LightSecondary = Color(0xFF03DAC5)
-val LightSecondaryVariant = Color(0xFF03DAC5)
-val LightBackground = Color(0xFF03DAC5)
-val LightSurface = Color(0xFF03DAC5)
-val LightError = Color(0xFF03DAC5)
-val LightOnPrimary = Color(0xFF03DAC5)
-val LightOnSecondary = Color(0xFF03DAC5)
-val LightOnBackground = Color(0xFF03DAC5)
-val LightOnSurface = Color(0xFF03DAC5)
-val LightOnError = Color(0xFF03DAC5)
+// the extra colors for MaterialTheme
+val Colors.extras: ExtraColors
+	get() = object : ExtraColors {
+		override val theme: Color
+			get() = Color(0xFF000000)
+		override val themeInverse: Color
+			get() = Color(0xFFFFFFFF)
+		override val surfaceLight: Color
+			get() = Color(0xFF282B32)
+		override val border: Color
+			get() = Color(0xFF191919)
+		override val surfaceBorder: Color
+			get() = Color(0xFF191919)
+		override val surfaceBorderLight: Color
+			get() = Color(0xFF383B42)
+		override val placeholder: Color
+			get() = Color(0xFF383B42)
+		override val text: Color
+			get() = Color(0xFFEFEFEF)
+		override val onSuccess: Color
+			get() = Color(0xFF28A745)
+		override val onWarning: Color
+			get() = Color(0xFFFFC107)
+		override val onDanger: Color
+			get() = Color(0xFFDC3545)
+	}
