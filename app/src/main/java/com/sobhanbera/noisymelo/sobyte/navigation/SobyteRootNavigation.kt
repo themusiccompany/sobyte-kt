@@ -1,9 +1,9 @@
 package com.sobhanbera.noisymelo.sobyte.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 
 import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.AuthNavigationTree
@@ -33,8 +33,9 @@ import com.sobhanbera.noisymelo.sobyte.screens.core.common.EditProfileScreen
  * Both Authentication and root app navigator
  */
 @Composable
-fun SobyteRootNavigation() {
-	val navController = rememberNavController()
+fun SobyteRootNavigation(
+	navController: NavHostController
+) {
 
 	NavHost(navController, AuthNavigationTree.name) {
 		// authentication screen stack
