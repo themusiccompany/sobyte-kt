@@ -4,13 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
+import androidx.compose.material.Surface
 import com.sobhanbera.noisymelo.sobyte.ui.theme.SobyteTheme
-import androidx.compose.ui.text.font.FontFamily
+import com.sobhanbera.noisymelo.sobyte.navigation.SobyteRootNavigation
 import com.sobhanbera.noisymelo.sobyte.ui.theme.extras
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,7 +16,7 @@ class MainActivity : ComponentActivity() {
 		super.onCreate(savedInstanceState)
 		setContent {
 			SobyteTheme {
-
+				SobyteRootNavigation()
 			}
 		}
 	}

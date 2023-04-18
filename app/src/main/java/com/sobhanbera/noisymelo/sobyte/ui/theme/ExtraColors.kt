@@ -10,6 +10,7 @@ import androidx.compose.material.Colors
  * @see [Colors.extras]
  */
 interface ExtraColors {
+	val transparent: Color
 	val theme: Color
 	val themeInverse: Color
 	val surfaceLight: Color
