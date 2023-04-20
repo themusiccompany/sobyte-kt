@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.sobhanbera.noisymelo.sobyte.controllers.ScreenController
 
 import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.AuthNavigationTree
 import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.AuthNavigationTree.LANDING_SCREEN
@@ -34,21 +35,21 @@ import com.sobhanbera.noisymelo.sobyte.screens.core.common.EditProfileScreen
  */
 @Composable
 fun SobyteRootNavigation(
-	navController: NavHostController
+	navController: NavHostController,
+	screenController: ScreenController
 ) {
-
 	NavHost(navController, AuthNavigationTree.name) {
 		// authentication screen stack
 		navigation(LANDING_SCREEN, AuthNavigationTree.name) {
 			// authentication screens
 			composable(LANDING_SCREEN) {
-				LandingScreen(navController)
+				LandingScreen(navController, screenController)
 			}
 			composable(SIGN_IN_SCREEN) {
-				SignInScreen(navController)
+				SignInScreen(navController, screenController)
 			}
 			composable(SIGN_UP_SCREEN) {
-				SignUpScreen(navController)
+				SignUpScreen(navController, screenController)
 			}
 		}
 
@@ -56,24 +57,24 @@ fun SobyteRootNavigation(
 		navigation(MUSIC_PLAYER_SCREEN, MainNavigationTree.name) {
 			// these four screens will be available through the bottom bar navigation
 			composable(MUSIC_PLAYER_SCREEN) {
-				MusicPlayerScreen(navController)
+				MusicPlayerScreen(navController, screenController)
 			}
 			composable(HOME_EXPLORE_SCREEN) {
-				HomeExploreScreen(navController)
+				HomeExploreScreen(navController, screenController)
 			}
 			composable(SEARCH_SCREEN) {
-				SearchScreen(navController)
+				SearchScreen(navController, screenController)
 			}
 			composable(PROFILE_SCREEN) {
-				ProfileScreen(navController)
+				ProfileScreen(navController, screenController)
 			}
 
 			// other common screens
 			composable(SETTING_SCREEN) {
-				SettingScreen(navController)
+				SettingScreen(navController, screenController)
 			}
 			composable(EDIT_PROFILE_SCREEN) {
-				EditProfileScreen(navController)
+				EditProfileScreen(navController, screenController)
 			}
 		}
 	}
