@@ -45,4 +45,15 @@ val Colors.extras: ExtraColors
 			get() = Color(0xFFFFC107)
 		override val onDanger: Color
 			get() = Color(0xFFDC3545)
+		override val primaryGradients: List<Color>
+			get() = listOf(
+				Color(0xFF0F002D),
+				Color(0xFF0F002D),
+				Color(0xFF0A032B),
+				Color(0xFF07012B),
+				Color(0xFF07012B),
+				Color(0xFF07012B),
+				Color(0xFF10003E),
+				Color(0xFF10004E),
+			)
 	}

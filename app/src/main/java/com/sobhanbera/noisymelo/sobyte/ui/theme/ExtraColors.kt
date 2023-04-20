@@ -22,4 +22,5 @@ interface ExtraColors {
 	val onSuccess: Color
 	val onWarning: Color
 	val onDanger: Color
+	val primaryGradients: List<Color>
 }
