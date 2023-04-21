@@ -1,10 +1,21 @@
 package com.sobhanbera.noisymelo.sobyte.funextension
 
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.gestures.waitForUpOrCancellation
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.runtime.*
 import kotlin.math.*
 
 /**
@@ -48,3 +59,59 @@ fun Modifier.gradientBackground(
 		)
 	}
 )
+
+/**
+ * this enum hold the state of the button
+ * particularly if it is clicked or not
+ */
+enum class ButtonClickState {
+	CLICKED,
+	IDLE
+}
+
+/**
+ * This function makes any composable as scalable when clicked
+ * if scaleOnClick is used the composable will scale to the
+ * given value when clicked
+ *
+ * @param scaleOnClick the scale value to be used when clicked
+ * @return the modifier with the scaleOnClick functionality
+ */
+fun Modifier.scaleOnClick(
+	scaleOnClick: Float = 0.95f,
+) = composed {
+	// state to manage the button clicked state
+	// 2nd state to manage the scale value/animated scale value
+	var buttonState by remember {
+		mutableStateOf(ButtonClickState.IDLE)
+	}
+
+	val scale by animateFloatAsState(
+		if (buttonState == ButtonClickState.CLICKED)
+			scaleOnClick
+		else 1f
+	)
+
+	this
+		.graphicsLayer {
+			scaleX = scale // main scale property applied here
+			scaleY = scale // main scale property applied here
+		}
+		.clickable(
+			interactionSource = remember { MutableInteractionSource() },
+			indication = null,
+			onClick = { }
+		)
+		.pointerInput(buttonState) {
+			awaitPointerEventScope {
+				// changes the animation based on what is the current state of the button
+				buttonState = if (buttonState == ButtonClickState.CLICKED) {
+					waitForUpOrCancellation()
+					ButtonClickState.IDLE
+				} else {
+					awaitFirstDown(false)
+					ButtonClickState.CLICKED
+				}
+			}
+		}
+}
