@@ -7,22 +7,22 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AlternateEmail
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.sobhanbera.noisymelo.sobyte.R
-import com.sobhanbera.noisymelo.sobyte.components.HyperlinkText
-import com.sobhanbera.noisymelo.sobyte.components.SobyteAuthButton
-import com.sobhanbera.noisymelo.sobyte.components.SobyteLinearGradient
-import com.sobhanbera.noisymelo.sobyte.components.SobyteStatusBar
+import com.sobhanbera.noisymelo.sobyte.components.*
 import com.sobhanbera.noisymelo.sobyte.configs.APP_PRIVACY_POLICY_URL
 import com.sobhanbera.noisymelo.sobyte.configs.APP_TERMS_AND_CONDITIONS_URL
 import com.sobhanbera.noisymelo.sobyte.configs.SOBYTE_SLOGAN
 import com.sobhanbera.noisymelo.sobyte.controllers.ScreenController
 import com.sobhanbera.noisymelo.sobyte.funextension.scaleOnClick
+import com.sobhanbera.noisymelo.sobyte.model.AppLogLevels
 import com.sobhanbera.noisymelo.sobyte.ui.theme.extras
+import com.sobhanbera.noisymelo.sobyte.utils.showAppSnackbar
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -30,12 +30,19 @@ fun LandingScreen(
 	navController: NavController,
 	screenController: ScreenController
 ) {
-	// change the status bar color, and blending it with the below gradient-background
-	SobyteStatusBar(
-		color = MaterialTheme.colors.extras.primaryGradients[0]
-	)
+	// to show the error message in this screen
+	val scaffoldState = rememberScaffoldState()
+	val coroutineScope = rememberCoroutineScope()
 
-	Scaffold {
+	Scaffold(
+		scaffoldState = scaffoldState,
+		snackbarHost = { AppSnackbarHost(it) },
+	) {
+		// change the status bar color, and blending it with the below gradient-background
+		SobyteStatusBar(
+			color = MaterialTheme.colors.extras.primaryGradients[0]
+		)
+
 		SobyteLinearGradient(
 			colors = MaterialTheme.colors.extras.primaryGradients,
 			modifier = Modifier.fillMaxSize()
@@ -72,11 +79,6 @@ fun LandingScreen(
 				 * this colum contains the bottom part of this landing screen
 				 * like register and login button and T&C link and more...
 				 */
-
-				/**
-				 * this colum contains the bottom part of this landing screen
-				 * like register and login button and T&C link and more...
-				 */
 				Column(
 					modifier = Modifier
 				) {
@@ -88,12 +90,14 @@ fun LandingScreen(
 					) {
 						SobyteAuthButton(
 							text = "Register For Free!",
-							onClick = { /*TODO*/ },
+							onClick = {
+
+							},
 							rightIcon = {
 								Icon(Icons.Outlined.AlternateEmail, contentDescription = "email icon")
 							},
 						)
-
+						
 						Spacer(modifier = Modifier.height(20.dp))
 
 						SobyteAuthButton(
@@ -121,7 +125,16 @@ fun LandingScreen(
 							),
 							linkColor = Color.White,
 							textStyle = MaterialTheme.typography.body2,
-							textColor = MaterialTheme.colors.onSurface
+							textColor = MaterialTheme.colors.onSurface,
+							fallbackFunction = {
+								showAppSnackbar(
+									"Can't open url in browser.",
+									SnackbarDuration.Short,
+									coroutineScope,
+									scaffoldState,
+									AppLogLevels.ERROR
+								)
+							}
 						)
 					}
 				}
