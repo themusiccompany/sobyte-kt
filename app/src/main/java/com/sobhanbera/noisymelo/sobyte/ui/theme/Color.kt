@@ -15,8 +15,8 @@ val DarkError = Color(0xFFFF5500)
 val DarkOnPrimary = Color(0xFFFFFFFF)
 val DarkOnSecondary = Color(0xFFEFEFEF)
 val DarkOnBackground = Color(0xFFFFFFFF)
-val DarkOnSurface = Color(0xFFEFEFEF)
-val DarkOnError = Color(0xFFEFEFEF)
+val DarkOnSurface = Color(0xFFBFBFBF)
+val DarkOnError = Color(0xFFDFDFFF)
 
 // the extra colors for MaterialTheme
 val Colors.extras: ExtraColors
@@ -38,7 +38,7 @@ val Colors.extras: ExtraColors
 		override val placeholder: Color
 			get() = Color(0xFF383B42)
 		override val text: Color
-			get() = Color(0xFFEFEFEF)
+			get() = Color(0xFFFFFFFF)
 		override val onSuccess: Color
 			get() = Color(0xFF28A745)
 		override val onWarning: Color
