@@ -1,10 +1,12 @@
 package com.sobhanbera.noisymelo.sobyte.components
 
+import android.widget.Toast
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -25,7 +27,8 @@ fun HyperlinkText(
 	linkColor: Color,
 	linkTextFontWeight: FontWeight = FontWeight.Normal,
 	linkTextDecoration: TextDecoration = TextDecoration.Underline,
-	fontSize: TextUnit = TextUnit.Unspecified
+	fontSize: TextUnit = TextUnit.Unspecified,
+	fallbackFunction: () -> Unit = {},
 ) {
 	val annotatedString = buildAnnotatedString {
 		append(text)
@@ -75,7 +78,13 @@ fun HyperlinkText(
 		onClick = {
 			annotatedString.getStringAnnotations("URL", it, it)
 				.firstOrNull()?.let { annotation ->
-					uriHandler.openUri(annotation.item)
+					try {
+
+//						uriHandler.openUri(annotation.item)
+						val a = 2 / 0
+					} catch (e: Exception) {
+						fallbackFunction()
+					}
 				}
 		},
 	)
