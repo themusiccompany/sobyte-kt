@@ -34,9 +34,8 @@ fun SobyteEntryBottomBarNavigation(
 ) {
 	// allowed screens in the bottom navigation bar to be shown
 	val screens = listOf(
-		ScreenParams.MUSIC_PLAYER_SCREEN,
 		ScreenParams.HOME_EXPLORE_SCREEN,
-		ScreenParams.SEARCH_SCREEN,
+		ScreenParams.MUSIC_PLAYER_SCREEN,
 		ScreenParams.PROFILE_SCREEN,
 	)
 

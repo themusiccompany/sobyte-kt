@@ -36,7 +36,8 @@ import com.sobhanbera.noisymelo.sobyte.utils.showAppSnackbar
 @Composable
 fun LandingScreen(
 	navController: NavController,
-	screenController: ScreenController
+	screenController: ScreenController,
+	login: () -> Unit,
 ) {
 	// to show the error message in this screen
 	val scaffoldState = rememberScaffoldState()
@@ -94,11 +95,12 @@ fun LandingScreen(
 						SobyteAuthButton(
 							text = "Register For Free!",
 							onClick = {
-								navigateToScreen(
-									navController,
-									ScreenParams.MAIN_APP_NAVIGATION,
-									true,
-								)
+//								navigateToScreen(
+//									navController,
+//									ScreenParams.MAIN_APP_NAVIGATION,
+//									true,
+//								)
+								login()
 							},
 							rightIcon = {
 								Icon(Icons.Outlined.AlternateEmail, contentDescription = "email icon")
