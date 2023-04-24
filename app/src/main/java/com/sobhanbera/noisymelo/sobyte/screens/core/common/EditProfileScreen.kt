@@ -9,5 +9,5 @@ fun EditProfileScreen(
 	navController: NavController,
 	screenController: ScreenController
 ) {
-
+	Text(text = "Edit Profile Screen")
 }
