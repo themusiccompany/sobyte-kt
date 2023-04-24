@@ -25,9 +25,11 @@ import com.sobhanbera.noisymelo.sobyte.configs.SOBYTE_SLOGAN
 import com.sobhanbera.noisymelo.sobyte.controllers.ScreenController
 import com.sobhanbera.noisymelo.sobyte.funextension.scaleOnClick
 import com.sobhanbera.noisymelo.sobyte.model.AppLogLevels
+import com.sobhanbera.noisymelo.sobyte.model.ScreenParams
 import com.sobhanbera.noisymelo.sobyte.ui.theme.extras
 import com.sobhanbera.noisymelo.sobyte.utils.addToStatusBarHeight
 import com.sobhanbera.noisymelo.sobyte.utils.getStatusBarHeight
+import com.sobhanbera.noisymelo.sobyte.utils.navigateToScreen
 import com.sobhanbera.noisymelo.sobyte.utils.showAppSnackbar
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -92,7 +94,11 @@ fun LandingScreen(
 						SobyteAuthButton(
 							text = "Register For Free!",
 							onClick = {
-
+								navigateToScreen(
+									navController,
+									ScreenParams.MAIN_APP_NAVIGATION,
+									true,
+								)
 							},
 							rightIcon = {
 								Icon(Icons.Outlined.AlternateEmail, contentDescription = "email icon")

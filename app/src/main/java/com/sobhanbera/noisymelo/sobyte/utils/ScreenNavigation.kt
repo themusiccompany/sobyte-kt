@@ -1,6 +1,7 @@
 package com.sobhanbera.noisymelo.sobyte.utils
 
 import android.content.res.Resources
+import android.util.Log
 import androidx.navigation.NavController
 import com.sobhanbera.noisymelo.sobyte.model.ScreenParams
 
@@ -9,10 +10,20 @@ import com.sobhanbera.noisymelo.sobyte.model.ScreenParams
  *
  * @param navigationController: NavController - The NavController instance to navigate to the screen
  * @param screenParams: ScreenParams - The ScreenParams data
+ * @param popBackStack: Boolean - Whether to pop the back stack or not (after navigating to the screen)
  * @return String - The screen route name
  */
-fun navigateToScreen(navigationController: NavController, screenParams: ScreenParams): String {
-	navigationController.navigate(screenParams.screenRouteName)
+fun navigateToScreen(
+	navigationController: NavController,
+	screenParams: ScreenParams,
+	popBackStack: Boolean = false
+): String {
+	navigationController.navigate(screenParams.screenRouteName) {
+		// if the screen has arguments, then add them to the navigation action
+		if (popBackStack) {
+			navigationController.popBackStack()
+		}
+	}
 
 	return screenParams.screenRouteName
 }

@@ -1,9 +1,13 @@
 package com.sobhanbera.noisymelo.sobyte.navigation
 
+import android.annotation.SuppressLint
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.sobhanbera.noisymelo.sobyte.controllers.ScreenController
 
@@ -12,22 +16,10 @@ import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.AuthNavigationTree.L
 import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.AuthNavigationTree.SIGN_IN_SCREEN
 import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.AuthNavigationTree.SIGN_UP_SCREEN
 import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.MainNavigationTree
-import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.MainNavigationTree.MUSIC_PLAYER_SCREEN
-import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.MainNavigationTree.HOME_EXPLORE_SCREEN
-import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.MainNavigationTree.SEARCH_SCREEN
-import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.MainNavigationTree.PROFILE_SCREEN
-import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.MainNavigationTree.SETTING_SCREEN
-import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.MainNavigationTree.EDIT_PROFILE_SCREEN
 
 import com.sobhanbera.noisymelo.sobyte.screens.auth.LandingScreen
 import com.sobhanbera.noisymelo.sobyte.screens.auth.SignInScreen
 import com.sobhanbera.noisymelo.sobyte.screens.auth.SignUpScreen
-import com.sobhanbera.noisymelo.sobyte.screens.core.MusicPlayerScreen
-import com.sobhanbera.noisymelo.sobyte.screens.core.HomeExploreScreen
-import com.sobhanbera.noisymelo.sobyte.screens.core.SearchScreen
-import com.sobhanbera.noisymelo.sobyte.screens.core.ProfileScreen
-import com.sobhanbera.noisymelo.sobyte.screens.core.common.SettingScreen
-import com.sobhanbera.noisymelo.sobyte.screens.core.common.EditProfileScreen
 
 /**
  * App's root navigation
@@ -53,29 +45,10 @@ fun SobyteRootNavigation(
 			}
 		}
 
-		// stack of screens for core application flow
-		navigation(MUSIC_PLAYER_SCREEN, MainNavigationTree.name) {
-			// these four screens will be available through the bottom bar navigation
-			composable(MUSIC_PLAYER_SCREEN) {
-				MusicPlayerScreen(navController, screenController)
-			}
-			composable(HOME_EXPLORE_SCREEN) {
-				HomeExploreScreen(navController, screenController)
-			}
-			composable(SEARCH_SCREEN) {
-				SearchScreen(navController, screenController)
-			}
-			composable(PROFILE_SCREEN) {
-				ProfileScreen(navController, screenController)
-			}
-
-			// other common screens
-			composable(SETTING_SCREEN) {
-				SettingScreen(navController, screenController)
-			}
-			composable(EDIT_PROFILE_SCREEN) {
-				EditProfileScreen(navController, screenController)
-			}
+		composable(MainNavigationTree.name) {
+			SobyteEntryBottomBarNavigation(
+				screenController = screenController
+			)
 		}
 	}
 }
