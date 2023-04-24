@@ -5,6 +5,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -16,6 +18,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.runtime.*
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.toolingGraphicsLayer
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import kotlin.math.*
 
 /**
@@ -75,10 +81,14 @@ enum class ButtonClickState {
  * given value when clicked
  *
  * @param scaleOnClick the scale value to be used when clicked
+ * @param cornerRadius the corner radius of the composable, (it is seen that when scaling the composable the corners are not rounded)
+ * @param onClick the click listener
  * @return the modifier with the scaleOnClick functionality
  */
 fun Modifier.scaleOnClick(
-	scaleOnClick: Float = 0.95f,
+	scaleOnClick: Float = 0.97f,
+	cornerRadius: Dp = 0.dp,
+	onClick: () -> Unit = {},
 ) = composed {
 	// state to manage the button clicked state
 	// 2nd state to manage the scale value/animated scale value
@@ -97,10 +107,11 @@ fun Modifier.scaleOnClick(
 			scaleX = scale // main scale property applied here
 			scaleY = scale // main scale property applied here
 		}
+		.clip(shape = RoundedCornerShape(cornerRadius))
 		.clickable(
 			interactionSource = remember { MutableInteractionSource() },
 			indication = null,
-			onClick = { }
+			onClick = { onClick() }
 		)
 		.pointerInput(buttonState) {
 			awaitPointerEventScope {

@@ -1,11 +1,15 @@
 package com.sobhanbera.noisymelo.sobyte.screens.auth
 
 import android.annotation.SuppressLint
+import android.content.res.Resources
+import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AlternateEmail
+import androidx.compose.material.icons.outlined.Login
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -22,6 +26,8 @@ import com.sobhanbera.noisymelo.sobyte.controllers.ScreenController
 import com.sobhanbera.noisymelo.sobyte.funextension.scaleOnClick
 import com.sobhanbera.noisymelo.sobyte.model.AppLogLevels
 import com.sobhanbera.noisymelo.sobyte.ui.theme.extras
+import com.sobhanbera.noisymelo.sobyte.utils.addToStatusBarHeight
+import com.sobhanbera.noisymelo.sobyte.utils.getStatusBarHeight
 import com.sobhanbera.noisymelo.sobyte.utils.showAppSnackbar
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -38,11 +44,6 @@ fun LandingScreen(
 		scaffoldState = scaffoldState,
 		snackbarHost = { AppSnackbarHost(it) }, // due to this prompts will be shown in the bottom
 	) {
-		// change the status bar color, and blending it with the below gradient-background
-		SobyteStatusBar(
-			color = MaterialTheme.colors.extras.primaryGradients[0]
-		)
-
 		SobyteLinearGradient(
 			colors = MaterialTheme.colors.extras.primaryGradients,
 			modifier = Modifier.fillMaxSize()
@@ -52,7 +53,7 @@ fun LandingScreen(
 				verticalArrangement = Arrangement.SpaceBetween,
 				modifier = Modifier
 					.padding(
-						top = 50.dp,
+						top = (addToStatusBarHeight(50)).dp, // making so that the content is not hidden behind the status bar
 						bottom = 20.dp,
 						start = 20.dp,
 						end = 20.dp
@@ -64,14 +65,14 @@ fun LandingScreen(
 						painter = painterResource(id = R.drawable.logo_with_name),
 						contentDescription = "app logo",
 						modifier = Modifier
-							.width(140.dp)
+							.width(115.dp)
 							.padding(vertical = 25.dp)
 							.scaleOnClick(0.98f)
 					)
 					
 					Text(
 						text = SOBYTE_SLOGAN,
-						style = MaterialTheme.typography.h1
+						style = MaterialTheme.typography.h2
 					)
 				}
 
@@ -105,10 +106,12 @@ fun LandingScreen(
 							onClick = { /*TODO*/ },
 							useSingleColor = true,
 							rightIcon = {
-								Icon(Icons.Outlined.AlternateEmail, contentDescription = "email icon")
+								Icon(Icons.Outlined.Login, contentDescription = "email icon")
 							},
 						)
 					}
+
+					Spacer(modifier = Modifier.height(30.dp))
 
 					// terms & conditions / privacy policy text
 					Row(
@@ -139,7 +142,7 @@ fun LandingScreen(
 					}
 
 					// a space from the bottom of the screen
-					Spacer(modifier = Modifier.height(50.dp))
+					Spacer(modifier = Modifier.height(10.dp))
 				}
 			}
 		}
