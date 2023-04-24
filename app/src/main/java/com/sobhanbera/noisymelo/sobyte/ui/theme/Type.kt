@@ -34,8 +34,34 @@ val Typography = Typography(
 	h1 = TextStyle(
 		fontFamily = FontFamily.Default,
 		fontWeight = FontWeight.Bold,
+		fontSize = 70.sp
+	),
+	h2 = TextStyle(
+		fontFamily = FontFamily.Default,
+		fontWeight = FontWeight.Bold,
 		fontSize = 55.sp
 	),
+	h3 = TextStyle(
+		fontFamily = FontFamily.Default,
+		fontWeight = FontWeight.Bold,
+		fontSize = 48.sp
+	),
+	h4 = TextStyle(
+		fontFamily = FontFamily.Default,
+		fontWeight = FontWeight.Bold,
+		fontSize = 36.sp
+	),
+	h5 = TextStyle(
+		fontFamily = FontFamily.Default,
+		fontWeight = FontWeight.Bold,
+		fontSize = 24.sp
+	),
+	h6 = TextStyle(
+		fontFamily = FontFamily.Default,
+		fontWeight = FontWeight.Bold,
+		fontSize = 18.sp
+	),
+
 	body1 = TextStyle(
 		fontFamily = FontFamily.Default,
 		fontWeight = FontWeight.Normal,
