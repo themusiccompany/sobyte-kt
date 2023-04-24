@@ -10,6 +10,10 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
  * this will be used to set the status bar color
  * @param color the color of the status bar
  */
+@Deprecated(
+	message = "This Composable is deprecated, The status bar is already made transparent in the root of the app",
+	level = DeprecationLevel.ERROR
+)
 @Composable
 fun SobyteStatusBar(
 	color: Color
