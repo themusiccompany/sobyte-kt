@@ -21,7 +21,10 @@ import com.sobhanbera.noisymelo.sobyte.ui.theme.extras
 fun AppSnackbarHost(
 	snackbarHostState: SnackbarHostState = SnackbarHostState(),
 ) {
-	SnackbarHost(hostState = snackbarHostState) {it ->
+	SnackbarHost(
+		hostState = snackbarHostState,
+		modifier = Modifier.offset(y = (-55).dp),
+	) {
 		/**
 		 * this variable hold the icon and color data to show in the UI
 		 * iconAndColor.first         - icon
@@ -75,7 +78,8 @@ fun AppSnackbarHost(
 					style = TextStyle(
 						fontWeight = FontWeight.Medium,
 					),
-					color = iconAndColor.second.second
+					color = iconAndColor.second.second,
+					maxLines = 1,
 				)
 
 				Spacer(modifier = Modifier.width(10.dp))

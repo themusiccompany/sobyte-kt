@@ -36,7 +36,7 @@ fun LandingScreen(
 
 	Scaffold(
 		scaffoldState = scaffoldState,
-		snackbarHost = { AppSnackbarHost(it) },
+		snackbarHost = { AppSnackbarHost(it) }, // due to this prompts will be shown in the bottom
 	) {
 		// change the status bar color, and blending it with the below gradient-background
 		SobyteStatusBar(
@@ -137,6 +137,9 @@ fun LandingScreen(
 							}
 						)
 					}
+
+					// a space from the bottom of the screen
+					Spacer(modifier = Modifier.height(50.dp))
 				}
 			}
 		}

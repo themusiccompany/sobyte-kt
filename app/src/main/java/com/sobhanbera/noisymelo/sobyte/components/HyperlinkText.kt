@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.sp
 import com.sobhanbera.noisymelo.sobyte.ui.theme.extras
 
 @Composable
@@ -73,15 +74,14 @@ fun HyperlinkText(
 		modifier = modifier,
 		style = textStyle.copy(
 			color = textColor,
-			textAlign = TextAlign.Center
+			textAlign = TextAlign.Center,
+			lineHeight = 20.sp
 		),
 		onClick = {
 			annotatedString.getStringAnnotations("URL", it, it)
 				.firstOrNull()?.let { annotation ->
 					try {
-
-//						uriHandler.openUri(annotation.item)
-						val a = 2 / 0
+						uriHandler.openUri(annotation.item)
 					} catch (e: Exception) {
 						fallbackFunction()
 					}
