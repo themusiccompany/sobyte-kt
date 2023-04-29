@@ -55,7 +55,7 @@ dependencies {
 
     // version record for all core packages...
     def core_kotlin_version = "1.10.0"
-    def compose_activity_version = "1.7.0"
+    def compose_activity_version = "1.7.1"
 
     // testing libraries version record
     def testing_junit_version = "4.13.2"

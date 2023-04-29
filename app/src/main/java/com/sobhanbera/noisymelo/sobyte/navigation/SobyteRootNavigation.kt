@@ -22,6 +22,8 @@ import com.sobhanbera.noisymelo.sobyte.model.NavigationTree.MainNavigationTree
 import com.sobhanbera.noisymelo.sobyte.screens.auth.LandingScreen
 import com.sobhanbera.noisymelo.sobyte.screens.auth.SignInScreen
 import com.sobhanbera.noisymelo.sobyte.screens.auth.SignUpScreen
+import com.sobhanbera.noisymelo.sobyte.viewmodels.CorePlayerViewModel
+import com.sobhanbera.noisymelo.sobyte.viewmodels.CorePlayerViewModelState
 
 /**
  * App's root navigation
@@ -30,7 +32,10 @@ import com.sobhanbera.noisymelo.sobyte.screens.auth.SignUpScreen
 @Composable
 fun SobyteRootNavigation(
 	navController: NavHostController,
-	screenController: ScreenController
+	screenController: ScreenController,
+
+	corePlayerViewModel: CorePlayerViewModel,
+	corePlayerState: CorePlayerViewModelState,
 ) {
 	// controls what to show on the screen
 	val userLoggedIn = remember {
@@ -60,7 +65,9 @@ fun SobyteRootNavigation(
 
 		composable(MainNavigationTree.name) {
 			SobyteEntryBottomBarNavigation(
-				screenController = screenController
+				screenController = screenController,
+				corePlayerState = corePlayerState,
+				corePlayerViewModel = corePlayerViewModel,
 			)
 		}
 	}
