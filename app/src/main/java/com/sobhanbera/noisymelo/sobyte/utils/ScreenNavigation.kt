@@ -34,12 +34,32 @@ fun navigateToScreen(
  * @return Int - The status bar height
  */
 fun getStatusBarHeight(): Int {
-	val resourceId = Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android")
+	val resourceId = Resources.getSystem().getIdentifier("screen_bar_height", "dimen", "android")
 	var statusBarHeight = if (resourceId > 0) Resources.getSystem().getDimensionPixelSize(resourceId) else 0
 	// converting the px height to dp
 	statusBarHeight = (statusBarHeight / Resources.getSystem().displayMetrics.density).toInt()
 
 	return statusBarHeight
+}
+
+/**
+ * This function is used to get the screen dimensions
+ * in DP
+ * @return Pair<Int, Int> - The screen dimensions
+ * 	    - Pair.first: Int - The screen width
+ * 		- Pair.second: Int - The screen height
+ */
+fun getScreenDimensions(): Pair<Int, Int> {
+	val displayMetrics = Resources.getSystem().displayMetrics // getting the display metrics
+	// getting the px width and height
+	val width = displayMetrics.widthPixels
+	val height = displayMetrics.heightPixels
+
+	// converting the px width and height to dp
+	val widthDP = (width / displayMetrics.density).toInt()
+	val heightDP = (height / displayMetrics.density).toInt()
+
+	return Pair(widthDP, heightDP)
 }
 
 /**

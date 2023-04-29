@@ -1,6 +1,7 @@
 package com.sobhanbera.noisymelo.sobyte.configs
 
 import com.sobhanbera.noisymelo.sobyte.R
+import com.sobhanbera.noisymelo.sobyte.utils.getScreenDimensions
 import com.sobhanbera.noisymelo.sobyte.utils.getStatusBarHeight
 
 const val SOBYTE_APP_NAME = "Sobyte"
@@ -11,6 +12,12 @@ const val SOBYTE_SLOGAN = "FEEL THE MUSIC"
 
 // dimensions for app
 val DEVICE_STATUS_BAR_HEIGHT: Int = getStatusBarHeight()
+val DEVICE_SCREEN_DIMENSIONS: Pair<Int, Int> = getScreenDimensions()
+val DEVICE_SCREEN_WIDTH: Int = DEVICE_SCREEN_DIMENSIONS.first
+val DEVICE_SCREEN_HEIGHT: Int = DEVICE_SCREEN_DIMENSIONS.second
+
+// the actual width of bottom bar is 90% of the screen width
+val ACTUAL_BOTTOM_BAR_WIDTH = DEVICE_SCREEN_WIDTH * 0.9f
 
 // resources for app logo
 const val DEFAULT_LOGO_RESOURCE = R.drawable.logo_small
@@ -78,6 +85,12 @@ const val DEFAULT_PLAYER_ARTWORK_QUALITY = 100 // this could be changed as per n
 // below value should not be changed regarding the shades on notification panel
 const val DEFAULT_NOTIFICATION_ARTWORK_SIZE = 300 // the size (width/height) of the image which will be shown in the notification of when a track is played short size of image would take less time to load and play the song faster then previously...
 const val DEFAULT_NOTIFICATION_ARTWORK_QUALITY = 100 // the quality of the image which will be shown in the notification of when a track is played short size of image would take less time to load and play the song faster then previously...
+
+const val TRACK_ARTWORK_SCREEN_WIDTH_OCCUPICATION = 0.82 // the artwork will take 82% of the available screen width
+const val TRACK_ARTWORK_SCREEN_WIDTH_SMALL_OCCUPICATION = 0.7 // the artwork will take 82% of the available screen width
+const val TRACK_ARTWORK_SCREEN_WIDTH_LARGE_OCCUPICATION = 0.9 // the artwork will take 82% of the available screen width
+val TRACK_ARTWORK_WIDTH = DEVICE_SCREEN_WIDTH * TRACK_ARTWORK_SCREEN_WIDTH_OCCUPICATION // track artwork width
+val TRACK_ARTWORK_HEIGHT = TRACK_ARTWORK_WIDTH // default track artwork height
 
 // TODO: this value needs to be changed
 const val TRACK_SHARE_ARTWORK_SIZE = 120 // the size of the image which will be used during sharing any track
