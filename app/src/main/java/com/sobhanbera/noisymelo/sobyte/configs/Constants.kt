@@ -20,9 +20,6 @@ const val LARGE_LOGO_RESOURCE = R.drawable.logo_large
 // resources for app logo with name
 const val DEFAULT_NAMED_LOGO_RESOURCE = R.drawable.logo_with_name
 const val DEFAULT_BOLD_NAMED_LOGO_RESOURCE = R.drawable.logo_with_name_bold
-// blur images
-const val BLUR_10_RESOURCE = R.drawable.blur10
-const val BLUR_20_RESOURCE = R.drawable.blur20
 
 // dimensions for app logo
 const val DEFAULT_LOGO_WIDTH = 202
