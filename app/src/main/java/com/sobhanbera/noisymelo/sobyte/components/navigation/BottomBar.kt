@@ -1,7 +1,12 @@
 package com.sobhanbera.noisymelo.sobyte.components.navigation
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.sobhanbera.noisymelo.sobyte.model.ScreenParams
@@ -24,7 +29,12 @@ fun BottomBar(
 
 	// if the current destination is a bottom bar destination, then show the bottom bar
 	if (bottomBarDestination) {
-		BottomNavigation {
+		BottomNavigation(
+			backgroundColor = MaterialTheme.colors.primary.copy(alpha = 1f),
+			modifier = Modifier
+				.padding(10.dp, 10.dp)
+				.clip(shape = RoundedCornerShape(100.dp, 100.dp, 100.dp, 100.dp))
+		) {
 			screensParamsList.forEach { screen ->
 				// add a bottom bar item for each screen
 				// AddNewBottomBarItem is a composable function
@@ -37,4 +47,3 @@ fun BottomBar(
 		}
 	}
 }
-

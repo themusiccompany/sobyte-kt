@@ -3,6 +3,7 @@ package com.sobhanbera.noisymelo.sobyte.ui.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 
 /**
  * color palette for dark theme of our application
@@ -37,10 +38,12 @@ fun SobyteTheme(
 ) {
 	val colors = DarkColorPalette
 
-	MaterialTheme(
-		colors = colors,
-		typography = Typography,
-		shapes = Shapes,
-		content = content
-	)
+	CompositionLocalProvider(LocalGutters provides Gutters()) {
+		MaterialTheme(
+			colors = colors,
+			typography = Typography,
+			shapes = Shapes,
+			content = content
+		)
+	}
 }

@@ -4,17 +4,22 @@ import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.MusicNote
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import com.sobhanbera.noisymelo.sobyte.funextension.scaleOnClick
 import com.sobhanbera.noisymelo.sobyte.model.ScreenParams
+import com.sobhanbera.noisymelo.sobyte.utils.navigateToScreen
 
 /**
  * Add new bottom bar item
@@ -34,7 +39,6 @@ fun RowScope.AddNewBottomBarItem(
 	val selected = currentDestination?.hierarchy?.any {
 		it.route == screen.screenRouteName
 	} == true
-	Log.d("BottomBar", "AddNewBottomBarItem: ${currentDestination?.hierarchy}")
 
 	BottomNavigationItem(
 		label = {
@@ -45,7 +49,7 @@ fun RowScope.AddNewBottomBarItem(
 				// toggle between states for selected and unselected for the icons
 				if (selected) screen.activeIcon ?: Icons.Outlined.MusicNote
 				else screen.inActiveIcon ?: Icons.Outlined.MusicNote,
-				contentDescription = "NavIcon"
+				contentDescription = "NavIcon",
 			)
 		},
 		selected = selected,
