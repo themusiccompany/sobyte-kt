@@ -86,7 +86,7 @@ enum class ButtonClickState {
  * @return the modifier with the scaleOnClick functionality
  */
 fun Modifier.scaleOnClick(
-	scaleOnClick: Float = 0.97f,
+	scaleOnClick: Float = 0.95f,
 	cornerRadius: Dp = 0.dp,
 	onClick: () -> Unit = {},
 ) = composed {

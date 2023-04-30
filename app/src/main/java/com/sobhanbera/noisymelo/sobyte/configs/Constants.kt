@@ -11,7 +11,8 @@ const val SOBYTE_APP_VERSION_CODE = 1
 const val SOBYTE_SLOGAN = "FEEL THE MUSIC"
 
 // dimensions for app
-val DEVICE_STATUS_BAR_HEIGHT: Int = getStatusBarHeight()
+val GET_DEVICE_STATUS_BAR_HEIGHT: Int = getStatusBarHeight()
+val DEVICE_STATUS_BAR_HEIGHT: Int = GET_DEVICE_STATUS_BAR_HEIGHT
 val DEVICE_SCREEN_DIMENSIONS: Pair<Int, Int> = getScreenDimensions()
 val DEVICE_SCREEN_WIDTH: Int = DEVICE_SCREEN_DIMENSIONS.first
 val DEVICE_SCREEN_HEIGHT: Int = DEVICE_SCREEN_DIMENSIONS.second
@@ -20,13 +21,20 @@ val DEVICE_SCREEN_HEIGHT: Int = DEVICE_SCREEN_DIMENSIONS.second
 val ACTUAL_BOTTOM_BAR_WIDTH = DEVICE_SCREEN_WIDTH * 0.9f
 
 // resources for app logo
-const val DEFAULT_LOGO_RESOURCE = R.drawable.logo_small
-const val SMALL_LOGO_RESOURCE = R.drawable.logo_small
-const val MEDIUM_LOGO_RESOURCE = R.drawable.logo_medium
-const val LARGE_LOGO_RESOURCE = R.drawable.logo_large
+const val DEFAULT_LOGO_RESOURCE_ID = R.drawable.logo_small
+const val SMALL_LOGO_RESOURCE_ID = R.drawable.logo_small
+const val MEDIUM_LOGO_RESOURCE_ID = R.drawable.logo_medium
+const val LARGE_LOGO_RESOURCE_ID = R.drawable.logo_large
 // resources for app logo with name
-const val DEFAULT_NAMED_LOGO_RESOURCE = R.drawable.logo_with_name
-const val DEFAULT_BOLD_NAMED_LOGO_RESOURCE = R.drawable.logo_with_name_bold
+const val DEFAULT_NAMED_LOGO_RESOURCE_ID = R.drawable.logo_with_name
+const val DEFAULT_BOLD_NAMED_LOGO_RESOURCE_ID = R.drawable.logo_with_name_bold
+
+// default custom external icons size (width, height) in px
+const val EXTERNAL_ICON_WIDTH = 250
+const val EXTERNAL_ICON_HEIGHT = 250
+
+// resources for icons
+const val ICON_SEARCH_RESOURCE_ID = R.drawable.icon_search
 
 // dimensions for app logo
 const val DEFAULT_LOGO_WIDTH = 202
@@ -91,6 +99,10 @@ const val TRACK_ARTWORK_SCREEN_WIDTH_SMALL_OCCUPICATION = 0.7 // the artwork wil
 const val TRACK_ARTWORK_SCREEN_WIDTH_LARGE_OCCUPICATION = 0.9 // the artwork will take 82% of the available screen width
 val TRACK_ARTWORK_WIDTH = DEVICE_SCREEN_WIDTH * TRACK_ARTWORK_SCREEN_WIDTH_OCCUPICATION // track artwork width
 val TRACK_ARTWORK_HEIGHT = TRACK_ARTWORK_WIDTH // default track artwork height
+
+val TRACK_ARTWORK_WIDTH_SMALL = DEVICE_SCREEN_WIDTH * TRACK_ARTWORK_SCREEN_WIDTH_SMALL_OCCUPICATION // somewhat small than default track artwork width
+val TRACK_ARTWORK_WIDTH_LARGE = DEVICE_SCREEN_WIDTH * TRACK_ARTWORK_SCREEN_WIDTH_LARGE_OCCUPICATION // somewhat larger than default track artwork width
+
 
 // TODO: this value needs to be changed
 const val TRACK_SHARE_ARTWORK_SIZE = 120 // the size of the image which will be used during sharing any track
