@@ -141,4 +141,11 @@ dependencies {
 
     // Palette - for extracting colors from images
     implementation "androidx.palette:palette-ktx:1.0.0"
+
+    // Iconics - for using custom icons
+    implementation "com.mikepenz:iconics-core:5.4.0"
+    implementation "com.mikepenz:iconics-compose:5.4.0"
+    implementation 'com.mikepenz:ionicons-typeface:2.0.1.7-kotlin@aar'
+    implementation 'com.mikepenz:octicons-typeface:11.1.0.0-kotlin@aar'
+
 }
