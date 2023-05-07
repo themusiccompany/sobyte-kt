@@ -1,5 +1,6 @@
 package com.sobhanbera.noisymelo.sobyte.screens.core.common
 
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import com.sobhanbera.noisymelo.sobyte.controllers.ScreenController

@@ -55,7 +55,7 @@ dependencies {
 
     // version record for all core packages...
     def core_kotlin_version = "1.10.0"
-    def compose_activity_version = "1.7.0"
+    def compose_activity_version = "1.7.1"
 
     // testing libraries version record
     def testing_junit_version = "4.13.2"
@@ -70,7 +70,7 @@ dependencies {
     def retrofit_version = "2.9.0"
     def okhttp_version = "4.10.0"
     def room_version = "2.5.1"
-    def exo_player_version = "2.18.5"
+    def exo_player_version = "2.18.6"
     def nav_version = "2.5.3"
     def accompanist_version = "0.30.1"
 
@@ -87,6 +87,7 @@ dependencies {
     implementation "androidx.compose.ui:ui"
     implementation "androidx.compose.ui:ui-tooling-preview"
     implementation "androidx.compose.material:material"
+    implementation "androidx.compose.material:material-icons-core:"
     implementation "androidx.compose.material:material-icons-extended:"
 
     // testing libraries/packages
@@ -108,8 +109,10 @@ dependencies {
     // compose ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$compose_lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-compose:$compose_lifecycle_version"
 
     // Coil - to render remote images
+    implementation("io.coil-kt:coil:$coil_version")
     implementation "io.coil-kt:coil-compose:$coil_version"
 
     // Retrofit and GSON parser - for network calls
@@ -135,4 +138,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
     implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
+
+    // Palette - for extracting colors from images
+    implementation "androidx.palette:palette-ktx:1.0.0"
+
+    // Iconics - for using custom icons
+    implementation "com.mikepenz:iconics-core:5.4.0"
+    implementation "com.mikepenz:iconics-compose:5.4.0"
+    implementation 'com.mikepenz:ionicons-typeface:2.0.1.7-kotlin@aar'
+    implementation 'com.mikepenz:octicons-typeface:11.1.0.0-kotlin@aar'
+
 }

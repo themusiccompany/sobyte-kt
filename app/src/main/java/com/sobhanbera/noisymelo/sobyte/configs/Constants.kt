@@ -1,7 +1,133 @@
 package com.sobhanbera.noisymelo.sobyte.configs
 
+import com.sobhanbera.noisymelo.sobyte.R
+import com.sobhanbera.noisymelo.sobyte.utils.getScreenDimensions
+import com.sobhanbera.noisymelo.sobyte.utils.getStatusBarHeight
+
 const val SOBYTE_APP_NAME = "Sobyte"
 const val SOBYTE_APP_VERSION = "1.0.0"
 const val SOBYTE_APP_VERSION_CODE = 1
 
 const val SOBYTE_SLOGAN = "FEEL THE MUSIC"
+
+// dimensions for app
+val GET_DEVICE_STATUS_BAR_HEIGHT: Int = getStatusBarHeight()
+val DEVICE_STATUS_BAR_HEIGHT: Int = GET_DEVICE_STATUS_BAR_HEIGHT
+val DEVICE_SCREEN_DIMENSIONS: Pair<Int, Int> = getScreenDimensions()
+val DEVICE_SCREEN_WIDTH: Int = DEVICE_SCREEN_DIMENSIONS.first
+val DEVICE_SCREEN_HEIGHT: Int = DEVICE_SCREEN_DIMENSIONS.second
+
+// the actual width of bottom bar is 90% of the screen width
+val ACTUAL_BOTTOM_BAR_WIDTH = DEVICE_SCREEN_WIDTH * 0.9f
+
+// resources for app logo
+const val DEFAULT_LOGO_RESOURCE_ID = R.drawable.logo_small
+const val SMALL_LOGO_RESOURCE_ID = R.drawable.logo_small
+const val MEDIUM_LOGO_RESOURCE_ID = R.drawable.logo_medium
+const val LARGE_LOGO_RESOURCE_ID = R.drawable.logo_large
+// resources for app logo with name
+const val DEFAULT_NAMED_LOGO_RESOURCE_ID = R.drawable.logo_with_name
+const val DEFAULT_BOLD_NAMED_LOGO_RESOURCE_ID = R.drawable.logo_with_name_bold
+
+// default custom external icons size (width, height) in px
+const val EXTERNAL_ICON_WIDTH = 250
+const val EXTERNAL_ICON_HEIGHT = 250
+
+// resources for icons
+const val ICON_SEARCH_RESOURCE_ID = R.drawable.icon_search
+
+// dimensions for app logo
+const val DEFAULT_LOGO_WIDTH = 202
+const val DEFAULT_LOGO_HEIGHT = 261
+const val SMALL_LOGO_WIDTH = 202 // same as default
+const val SMALL_LOGO_HEIGHT = 261
+const val MEDIUM_LOGO_WIDTH = 403 // double of default
+const val MEDIUM_LOGO_HEIGHT = 520
+const val LARGE_LOGO_WIDTH = 806 // double of medium & 4x of default
+const val LARGE_LOGO_HEIGHT = 1040
+
+// dimensions for app logos
+const val DEFAULT_NAMED_LOGO_DIVISION_RATE = 20 // division rate for named logo
+const val DEFAULT_LOGO_DIVISION_RATE = 10 // division rate for logo
+
+const val DEFAULT_BLUR_RADIUS = 35f // default blur radius
+
+// dimensions for app logo with name
+const val DEFAULT_LOGO_RENDER_WIDTH = DEFAULT_LOGO_WIDTH / DEFAULT_LOGO_DIVISION_RATE
+const val DEFAULT_LOGO_RENDER_HEIGHT = DEFAULT_LOGO_HEIGHT / DEFAULT_LOGO_DIVISION_RATE
+const val SMALL_LOGO_RENDER_WIDTH = SMALL_LOGO_WIDTH / DEFAULT_LOGO_DIVISION_RATE
+const val SMALL_LOGO_RENDER_HEIGHT = SMALL_LOGO_HEIGHT / DEFAULT_LOGO_DIVISION_RATE
+const val MEDIUM_LOGO_RENDER_WIDTH = MEDIUM_LOGO_WIDTH / DEFAULT_LOGO_DIVISION_RATE
+const val MEDIUM_LOGO_RENDER_HEIGHT = MEDIUM_LOGO_HEIGHT / DEFAULT_LOGO_DIVISION_RATE
+const val LARGE_LOGO_RENDER_WIDTH = LARGE_LOGO_WIDTH / DEFAULT_LOGO_DIVISION_RATE
+const val LARGE_LOGO_RENDER_HEIGHT = LARGE_LOGO_HEIGHT / DEFAULT_LOGO_DIVISION_RATE
+
+const val TINY_ICON_SIZE = 22 // size of tiny icons
+const val DEFAULT_ICON_SIZE = 24 // default icon size
+const val SMALL_ICON_SIZE = 28 // somewhat larger than tiny and deafult icon
+const val MEDIUM_ICON_SIZE = 32 // icon size for medium icons
+const val LARGE_ICON_SIZE = 38 // large icons size
+const val EXTRA_LARGE_ICON_SIZE = 45 // extra large icons size
+const val PLAY_PAUSE_ICON_SIZE = 80 // icon size for play/pause button
+
+// IMAGE CONSTANTS ABOUT QUALITIES.
+const val DEFAULT_ARTWORK_SIZE = 200 // default image width and height in string...
+const val DEFAULT_ARTWORK_QUALITY = 90 // default image quality in string...
+
+const val DEFAULT_SMALL_ARTWORK_SIZE = 120 // default small/low quality image width and height in string...
+const val DEFAULT_SMALL_ARTWORK_QUALITY = 90 // default small/low quality image quality in string...
+
+const val DEFAULT_MEDIUM_ARTWORK_SIZE = 446 // default medium quality image width and height in string...
+const val DEFAULT_MEDIUM_ARTWORK_QUALITY = 90 // default medium quality image quality in string...
+
+const val DEFAULT_LARGE_ARTWORK_SIZE = 594 // default high quality image width and height in string...
+const val DEFAULT_LARGE_ARTWORK_QUALITY = 100 // default high quality image quality in string...
+
+const val DEFAULT_EXTRA_LARGE_ARTWORK_SIZE = 720 // default extra high/extreme quality image width and height in string...
+const val DEFAULT_EXTRA_LARGE_ARTWORK_QUALITY = 100 // default extra high/extreme quality image quality in string...
+
+// TODO: this value needs to be changed
+const val DEFAULT_PLAYER_ARTWORK_SIZE = 720 // this could be changed as per need during development
+const val DEFAULT_PLAYER_ARTWORK_QUALITY = 100 // this could be changed as per need during development
+
+// below value should not be changed regarding the shades on notification panel
+const val DEFAULT_NOTIFICATION_ARTWORK_SIZE = 300 // the size (width/height) of the image which will be shown in the notification of when a track is played short size of image would take less time to load and play the song faster then previously...
+const val DEFAULT_NOTIFICATION_ARTWORK_QUALITY = 100 // the quality of the image which will be shown in the notification of when a track is played short size of image would take less time to load and play the song faster then previously...
+
+const val TRACK_ARTWORK_SCREEN_WIDTH_OCCUPICATION = 0.82 // the artwork will take 82% of the available screen width
+const val TRACK_ARTWORK_SCREEN_WIDTH_SMALL_OCCUPICATION = 0.7 // the artwork will take 82% of the available screen width
+const val TRACK_ARTWORK_SCREEN_WIDTH_LARGE_OCCUPICATION = 0.9 // the artwork will take 82% of the available screen width
+val TRACK_ARTWORK_WIDTH = DEVICE_SCREEN_WIDTH * TRACK_ARTWORK_SCREEN_WIDTH_OCCUPICATION // track artwork width
+val TRACK_ARTWORK_HEIGHT = TRACK_ARTWORK_WIDTH // default track artwork height
+
+val TRACK_ARTWORK_WIDTH_SMALL = DEVICE_SCREEN_WIDTH * TRACK_ARTWORK_SCREEN_WIDTH_SMALL_OCCUPICATION // somewhat small than default track artwork width
+val TRACK_ARTWORK_WIDTH_LARGE = DEVICE_SCREEN_WIDTH * TRACK_ARTWORK_SCREEN_WIDTH_LARGE_OCCUPICATION // somewhat larger than default track artwork width
+
+const val TRACK_ARTWORK_PARENT_VERTICAL_PADDING = 35 // the vertical padding around track artwork in player
+const val TRACK_ARTWORK_SPACING = 10 // the spacing between track artwork and other views in player
+val TRACK_ARTWORK_HORIZONTAL_SPACING = (DEVICE_SCREEN_WIDTH - TRACK_ARTWORK_WIDTH) / 2 // divide by 2, since the padding will be on both sides...
+
+val MAX_DISPLAY_HEIGHT_OF_TRACK_ARTWORK_WRAPPER =
+	(TRACK_ARTWORK_PARENT_VERTICAL_PADDING * 2) + // since vertical padding would be on both side, top & bottom
+	TRACK_ARTWORK_HEIGHT + // the actual track artwork height
+	DEVICE_SCREEN_HEIGHT * 0.02 // 2% of the screen's height available
+	// (TRACK_ARTWORK_SPACING * 2) // this is also on both side as above, the difference is, this is just a extra padding
+	// commented for now since it is covering a huge height
+
+
+// TODO: this value needs to be changed
+const val TRACK_SHARE_ARTWORK_SIZE = 120 // the size of the image which will be used during sharing any track
+const val TRACK_SHARE_ARTWORK_QUALITY = 100 // the quality of the image which will be used during sharing any track
+
+
+// API RELATED CONSTANTS FOR MUSIC
+// user agent while making api request
+const val MUSIC_API_USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36"
+// allowed languages during making api request...
+const val MUSIC_API_ACCEPTED_LANGUAGE = "en-IN,en-US,HI,BN,en;q=0.5"
+// type of music api request
+const val MUSIC_API_NEXT = "next"
+// currently it is public but plan is to make it private as env var
+const val MUSIC_API_KEY = "AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30"
+// value type returned by music api
+const val MUSIC_API_ALT = "json"

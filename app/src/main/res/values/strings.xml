@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Sobyte</string>
+
+    <!-- if anything is changed here, also have to change in other two places -->
+    <string name="color_primary">-16763003</string>
+    <string name="color_primary_variant">-15769418</string>
+    <string name="color_secondary">-1108647</string>
+    <string name="color_secondary_variant">-1149324</string>
+    <string name="color_background">-15592942</string>
 </resources>

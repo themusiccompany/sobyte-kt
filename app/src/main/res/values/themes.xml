@@ -4,6 +4,7 @@
     <style name="Theme.Sobyte" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
 
         <item name="android:forceDarkAllowed" tools:targetApi="q">true</item>
     </style>

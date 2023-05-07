@@ -1,12 +1,16 @@
 package com.sobhanbera.noisymelo.sobyte.funextension
 
+import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.pullrefresh.pullRefreshIndicatorTransform
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -18,10 +22,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.runtime.*
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.toolingGraphicsLayer
+import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.math.*
 
 /**
@@ -85,9 +93,11 @@ enum class ButtonClickState {
  * @param onClick the click listener
  * @return the modifier with the scaleOnClick functionality
  */
+@OptIn(ExperimentalComposeUiApi::class)
 fun Modifier.scaleOnClick(
-	scaleOnClick: Float = 0.97f,
+	scaleOnClick: Float = 0.95f,
 	cornerRadius: Dp = 0.dp,
+	delay: Long = 350,
 	onClick: () -> Unit = {},
 ) = composed {
 	// state to manage the button clicked state
@@ -102,12 +112,23 @@ fun Modifier.scaleOnClick(
 		else 1f
 	)
 
+	TODO("This might change in future") // the way we are handling the user click and each process
+	LaunchedEffect(key1 = buttonState) {
+		if (buttonState == ButtonClickState.CLICKED) {
+			delay(delay) // because this must not be abrupt animation
+
+			// if the button is still pressed after 1 second
+			if (buttonState == ButtonClickState.CLICKED) {
+				buttonState = ButtonClickState.IDLE
+			}
+		}
+	}
+
 	this
 		.graphicsLayer {
 			scaleX = scale // main scale property applied here
 			scaleY = scale // main scale property applied here
 		}
-		.clip(shape = RoundedCornerShape(cornerRadius))
 		.clickable(
 			interactionSource = remember { MutableInteractionSource() },
 			indication = null,
@@ -125,4 +146,16 @@ fun Modifier.scaleOnClick(
 				}
 			}
 		}
+//		.pointerInteropFilter {
+//			when (it.action) {
+//				MotionEvent.ACTION_DOWN -> {
+//					buttonState = ButtonClickState.CLICKED
+//				}
+//				MotionEvent.ACTION_UP  -> {
+//					buttonState = ButtonClickState.IDLE
+//				}
+//			}
+//			true
+//		}
+		.clip(shape = RoundedCornerShape(cornerRadius))
 }

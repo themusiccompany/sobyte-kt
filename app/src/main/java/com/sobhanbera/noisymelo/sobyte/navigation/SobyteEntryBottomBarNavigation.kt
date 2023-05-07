@@ -25,18 +25,23 @@ import com.sobhanbera.noisymelo.sobyte.screens.core.SearchScreen
 import com.sobhanbera.noisymelo.sobyte.screens.core.ProfileScreen
 import com.sobhanbera.noisymelo.sobyte.screens.core.common.SettingScreen
 import com.sobhanbera.noisymelo.sobyte.screens.core.common.EditProfileScreen
+import com.sobhanbera.noisymelo.sobyte.viewmodels.CorePlayerViewModel
+import com.sobhanbera.noisymelo.sobyte.viewmodels.CorePlayerViewModelState
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SobyteEntryBottomBarNavigation(
 	mainNavController: NavHostController = rememberNavController(),
-	screenController: ScreenController
+	screenController: ScreenController,
+
+	corePlayerViewModel: CorePlayerViewModel,
+	corePlayerState: CorePlayerViewModelState,
 ) {
 	// allowed screens in the bottom navigation bar to be shown
 	val screens = listOf(
-		ScreenParams.MUSIC_PLAYER_SCREEN,
 		ScreenParams.HOME_EXPLORE_SCREEN,
-		ScreenParams.SEARCH_SCREEN,
+		ScreenParams.MUSIC_PLAYER_SCREEN,
+//		ScreenParams.SEARCH_SCREEN,
 		ScreenParams.PROFILE_SCREEN,
 	)
 
@@ -44,7 +49,10 @@ fun SobyteEntryBottomBarNavigation(
 		bottomBar = {
 			BottomBar(
 				navController = mainNavController,
-				screensParamsList = screens
+				screensParamsList = screens,
+
+				corePlayerViewModel = corePlayerViewModel,
+				corePlayerState = corePlayerState,
 			)
 		}
 	) {
@@ -55,7 +63,7 @@ fun SobyteEntryBottomBarNavigation(
 		) {
 			// these four screens will be available through the bottom bar navigation
 			composable(MUSIC_PLAYER_SCREEN) {
-				MusicPlayerScreen(mainNavController, screenController)
+				MusicPlayerScreen(mainNavController, screenController, corePlayerViewModel, corePlayerState)
 			}
 			composable(HOME_EXPLORE_SCREEN) {
 				HomeExploreScreen(mainNavController, screenController)

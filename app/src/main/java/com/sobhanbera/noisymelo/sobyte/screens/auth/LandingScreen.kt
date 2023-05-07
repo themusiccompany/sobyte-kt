@@ -1,10 +1,7 @@
 package com.sobhanbera.noisymelo.sobyte.screens.auth
 
 import android.annotation.SuppressLint
-import android.content.res.Resources
-import android.util.Log
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -25,18 +22,16 @@ import com.sobhanbera.noisymelo.sobyte.configs.SOBYTE_SLOGAN
 import com.sobhanbera.noisymelo.sobyte.controllers.ScreenController
 import com.sobhanbera.noisymelo.sobyte.funextension.scaleOnClick
 import com.sobhanbera.noisymelo.sobyte.model.AppLogLevels
-import com.sobhanbera.noisymelo.sobyte.model.ScreenParams
 import com.sobhanbera.noisymelo.sobyte.ui.theme.extras
 import com.sobhanbera.noisymelo.sobyte.utils.addToStatusBarHeight
-import com.sobhanbera.noisymelo.sobyte.utils.getStatusBarHeight
-import com.sobhanbera.noisymelo.sobyte.utils.navigateToScreen
 import com.sobhanbera.noisymelo.sobyte.utils.showAppSnackbar
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun LandingScreen(
 	navController: NavController,
-	screenController: ScreenController
+	screenController: ScreenController,
+	login: () -> Unit,
 ) {
 	// to show the error message in this screen
 	val scaffoldState = rememberScaffoldState()
@@ -94,11 +89,12 @@ fun LandingScreen(
 						SobyteAuthButton(
 							text = "Register For Free!",
 							onClick = {
-								navigateToScreen(
-									navController,
-									ScreenParams.MAIN_APP_NAVIGATION,
-									true,
-								)
+//								navigateToScreen(
+//									navController,
+//									ScreenParams.MAIN_APP_NAVIGATION,
+//									true,
+//								)
+								login()
 							},
 							rightIcon = {
 								Icon(Icons.Outlined.AlternateEmail, contentDescription = "email icon")
