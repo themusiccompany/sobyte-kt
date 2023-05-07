@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.sobhanbera.noisymelo.sobyte.configs.ACTUAL_BOTTOM_BAR_WIDTH
 import com.sobhanbera.noisymelo.sobyte.funextension.scaleOnClick
@@ -49,8 +50,9 @@ fun RowScope.AddNewBottomBarItem(
 				if (selected) return@scaleOnClick
 
 				navController.navigate(screen.screenRouteName) {
-					// popUpTo(navController.graph.findStartDestination().id)
-					// launchSingleTop = true
+					 popUpTo(navController.graph.findStartDestination().id)
+					 launchSingleTop = true
+					 restoreState = true
 				}
 			}
 	) {

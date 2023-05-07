@@ -44,7 +44,7 @@ fun BottomBar(
 	val bottomBarColor = remember(currentDestination?.route, corePlayerState.colorPalette) {
 		// if the current route is exactly for music player interface, then use the dominant color
 		if (currentDestination?.route == ScreenParams.MUSIC_PLAYER_SCREEN.screenRouteName) {
-			corePlayerState.colorPalette?.dominantColor ?: null
+			corePlayerState.colorPalette?.darkMutedColor?.copy(alpha = 0f) ?: null
 		} else {
 			null
 		}
