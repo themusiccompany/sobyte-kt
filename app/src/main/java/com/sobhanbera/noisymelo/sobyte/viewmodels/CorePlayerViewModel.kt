@@ -72,6 +72,7 @@ class CorePlayerViewModel @Inject constructor(): ViewModel() {
 						override val darkVibrantColor: Color = Color(palette.getDarkVibrantColor(R.string.color_background))
 						override val lightMutedColor: Color = Color(palette.getLightMutedColor(R.string.color_background))
 						override val darkMutedColor: Color = Color(palette.getDarkMutedColor(R.string.color_background))
+//						override val swatches: List<Color> = palette.swatches.map { Color(it.rgb) }
 					}
 				)
 			}

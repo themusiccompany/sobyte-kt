@@ -23,6 +23,7 @@ interface ColorPalette {
 	val darkVibrantColor: Color
 	val lightMutedColor: Color
 	val darkMutedColor: Color
+//	val swatches: List<Color>
 }
 
 /**
@@ -35,4 +36,5 @@ val DefaultColorPalette = object: ColorPalette {
 	override val darkVibrantColor: Color = DarkBackground
 	override val lightMutedColor: Color = DarkBackground
 	override val darkMutedColor: Color = DarkBackground
+//	override val swatches: List<Color> = listOf(DarkBackground, DarkBackground)
 }

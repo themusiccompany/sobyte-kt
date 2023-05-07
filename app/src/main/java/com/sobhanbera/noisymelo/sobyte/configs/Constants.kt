@@ -103,6 +103,17 @@ val TRACK_ARTWORK_HEIGHT = TRACK_ARTWORK_WIDTH // default track artwork height
 val TRACK_ARTWORK_WIDTH_SMALL = DEVICE_SCREEN_WIDTH * TRACK_ARTWORK_SCREEN_WIDTH_SMALL_OCCUPICATION // somewhat small than default track artwork width
 val TRACK_ARTWORK_WIDTH_LARGE = DEVICE_SCREEN_WIDTH * TRACK_ARTWORK_SCREEN_WIDTH_LARGE_OCCUPICATION // somewhat larger than default track artwork width
 
+const val TRACK_ARTWORK_PARENT_VERTICAL_PADDING = 35 // the vertical padding around track artwork in player
+const val TRACK_ARTWORK_SPACING = 10 // the spacing between track artwork and other views in player
+val TRACK_ARTWORK_HORIZONTAL_SPACING = (DEVICE_SCREEN_WIDTH - TRACK_ARTWORK_WIDTH) / 2 // divide by 2, since the padding will be on both sides...
+
+val MAX_DISPLAY_HEIGHT_OF_TRACK_ARTWORK_WRAPPER =
+	(TRACK_ARTWORK_PARENT_VERTICAL_PADDING * 2) + // since vertical padding would be on both side, top & bottom
+	TRACK_ARTWORK_HEIGHT + // the actual track artwork height
+	DEVICE_SCREEN_HEIGHT * 0.02 // 2% of the screen's height available
+	// (TRACK_ARTWORK_SPACING * 2) // this is also on both side as above, the difference is, this is just a extra padding
+	// commented for now since it is covering a huge height
+
 
 // TODO: this value needs to be changed
 const val TRACK_SHARE_ARTWORK_SIZE = 120 // the size of the image which will be used during sharing any track
@@ -120,5 +131,3 @@ const val MUSIC_API_NEXT = "next"
 const val MUSIC_API_KEY = "AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30"
 // value type returned by music api
 const val MUSIC_API_ALT = "json"
-
-
